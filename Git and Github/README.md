@@ -41,3 +41,9 @@ The following table lists some basic Git commands along with their descriptions:
 | 13     | **Set u**          | `git push -u origin main`         | Sets the upstream for the current branch to the main branch on the remote repository. |
 | 14     | **Simple Push**    | `git push`                        | Pushes changes to the remote repository for the current branch.                       |
 | 15     | **Add and Commit** | `git commit -am "Some message"`   | Adds and commits changes in one command                                               |
+
+## Branch Commands
+
+| **Sl** | **Name**          | **Command**                | **Description**                              |
+| ------ | ----------------- | -------------------------- | -------------------------------------------- |
+| 01     | **Create Branch** | `git branch <branch_name>` | Creates a new branch with the specified name |
