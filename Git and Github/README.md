@@ -44,6 +44,10 @@ The following table lists some basic Git commands along with their descriptions:
 
 ## Branch Commands
 
-| **Sl** | **Name**          | **Command**                | **Description**                              |
-| ------ | ----------------- | -------------------------- | -------------------------------------------- |
-| 01     | **Create Branch** | `git branch <branch_name>` | Creates a new branch with the specified name |
+| **Sl** | **Name**          | **Command**                       | **Description**              |
+| ------ | ----------------- | --------------------------------- | ---------------------------- |
+| 01     | **Check Branch**  | `git branch`                      | To check branch              |
+| 02     | **Rename Branch** | `git branch -M <new_branch_name>` | To rename the current branch |
+| 03     | **Navigate**      | `git checkout <branch_name>`      | To navigate to a branch      |
+| 04     | **Create Branch** | `git checkout -b <branch_name>`   | To create a new branch       |
+| 05     | **Delete Branch** | `git branch -d <branch_name>`     | To delete a branch           |
