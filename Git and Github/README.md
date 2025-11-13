@@ -38,3 +38,4 @@ The following table lists some basic Git commands along with their descriptions:
 | 10     | **Branch**        | `git branch`                      | To check remote branch                                                      |
 | 11     | **Rename branch** | `git branch -M <new_branch_name>` | To rename the current branch                                                |
 | 12     | **Push to main**  | `git push origin main`            | Pushes the current branch to the main branch on the remote repository       |
+
