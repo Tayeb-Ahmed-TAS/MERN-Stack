@@ -52,3 +52,17 @@ The following table lists some basic Git commands along with their descriptions:
 | 04     | **Create Branch** | `git checkout -b <branch_name>`                | To create a new branch       |
 | 05     | **Delete Branch** | `git branch -d <branch_name>`                  | To delete a branch           |
 | 06     | **Push Branch**   | `git push --set-upstream origin <branch_name>` | To push a branch to remote   |
+
+## Merging Code
+
+Merging is the process of combining changes from different branches. To merge a branch into your current branch, use the following command:
+
+| **Command**               | **Description**                                                                             |
+| ------------------------- | ------------------------------------------------------------------------------------------- |
+| `git diff <branch_name>`  | To compare commits, branches, files & more                                                  |
+| `git merge <branch_name>` | To merge 2 branches into the current branch                                                 |
+| `git pull`                | To fetch and merge changes from remote repo (It is a straightforward way to merge branches) |
+
+## Pull Request
+
+A **Pull Request (PR)** lets you tell about changes you've pushed to a branch in a repository on GitHub.
