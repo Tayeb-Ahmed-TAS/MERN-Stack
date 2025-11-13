@@ -94,3 +94,9 @@ Used to fetch and download content from a remote repo and immediately uodate the
 ```bash
 git pull origin <branch_name>
 ```
+
+## Merge Conflicts
+
+An event that takes place when Git is unable to automatically resolve differences in code between two commits.
+
+This usually happens when multiple people are working on the same part of a file or when changes have been made to a file in both branches that are being merged. When a merge conflict occurs, Git will mark the file as conflicted and stop the merge process until the conflicts are resolved manually.
