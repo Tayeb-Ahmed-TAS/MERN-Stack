@@ -24,19 +24,20 @@ git config --list
 
 The following table lists some basic Git commands along with their descriptions:
 
-| **Sl** | **Name**          | **Command**                       | **Description**                                                                       |
-| ------ | ----------------- | --------------------------------- | ------------------------------------------------------------------------------------- |
-| 01     | **Clone**         | `git clone <repository_url>`      | Cloning a repositoru on your local machine                                            |
-| 02     | **Status**        | `git status`                      | Displays the state of the code                                                        |
-| 03     | **Add**           | `git add <file_name>`             | Adds new or changed files in your working directory to git staging area               |
-| 04     | **Add All**       | `git add .`                       | Adds all new or changed files in your working directory to git staging area           |
-| 05     | **Commit**        | `git commit -m "Some message"`    | It is the record of change                                                            |
-| 06     | **Push**          | `git push origin <branch_name>`   | Upload local repo content to remote repo                                              |
-| 07     | **Init**          | `git init`                        | Used to create a new git repo                                                         |
-| 08     | **Remote add**    | `git remote add origin <url>`     | Connects your local repo to a remote server                                           |
-| 09     | **Remote show**   | `git remote -v`                   | To verify remote                                                                      |
-| 10     | **Branch**        | `git branch`                      | To check remote branch                                                                |
-| 11     | **Rename branch** | `git branch -M <new_branch_name>` | To rename the current branch                                                          |
-| 12     | **Push to main**  | `git push origin main`            | Pushes the current branch to the main branch on the remote repository                 |
-| 13     | **Set u**         | `git push -u origin main`         | Sets the upstream for the current branch to the main branch on the remote repository. |
-| 14     | **Simple Push**   | `git push`                        | Pushes changes to the remote repository for the current branch.                       |
+| **Sl** | **Name**           | **Command**                       | **Description**                                                                       |
+| ------ | ------------------ | --------------------------------- | ------------------------------------------------------------------------------------- |
+| 01     | **Clone**          | `git clone <repository_url>`      | Cloning a repositoru on your local machine                                            |
+| 02     | **Status**         | `git status`                      | Displays the state of the code                                                        |
+| 03     | **Add**            | `git add <file_name>`             | Adds new or changed files in your working directory to git staging area               |
+| 04     | **Add All**        | `git add .`                       | Adds all new or changed files in your working directory to git staging area           |
+| 05     | **Commit**         | `git commit -m "Some message"`    | It is the record of change                                                            |
+| 06     | **Push**           | `git push origin <branch_name>`   | Upload local repo content to remote repo                                              |
+| 07     | **Init**           | `git init`                        | Used to create a new git repo                                                         |
+| 08     | **Remote add**     | `git remote add origin <url>`     | Connects your local repo to a remote server                                           |
+| 09     | **Remote show**    | `git remote -v`                   | To verify remote                                                                      |
+| 10     | **Branch**         | `git branch`                      | To check remote branch                                                                |
+| 11     | **Rename branch**  | `git branch -M <new_branch_name>` | To rename the current branch                                                          |
+| 12     | **Push to main**   | `git push origin main`            | Pushes the current branch to the main branch on the remote repository                 |
+| 13     | **Set u**          | `git push -u origin main`         | Sets the upstream for the current branch to the main branch on the remote repository. |
+| 14     | **Simple Push**    | `git push`                        | Pushes changes to the remote repository for the current branch.                       |
+| 15     | **Add and Commit** | `git commit -am "Some message"`   | Adds and commits changes in one command                                               |
