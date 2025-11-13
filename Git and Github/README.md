@@ -110,7 +110,9 @@ Then you can push the resolved changes to the remote repository using `git push 
 
 ## Fixing Mistakes
 
-- **Case 1 :** Staged changes
+### **Case 1 :** Staged changes
+
+---
 
 If you have staged changes that you want to unstage, you can use the following command:
 
@@ -126,7 +128,9 @@ git reset
 
 This command will unstage the specified file, moving it back to the working directory without discarding any changes.
 
-- **Case 2 :** Committed changes (for one commit)
+### **Case 2 :** Committed changes (for one commit)
+
+---
 
 If you have committed changes that you want to undo, you can use the following command to revert to the previous commit while keeping your changes in the working directory:
 
@@ -136,7 +140,9 @@ git reset HEAD~1
 
 This command will move the HEAD pointer back by one commit, effectively undoing the last commit but preserving the changes in your working directory.
 
-- **Case 3 :** Committed changes (for many commits)
+### **Case 3 :** Committed changes (for many commits)
+
+---
 
 If you want to undo multiple commits, you can specify the number of commits to go back. For example, to undo the last three commits, you can use:
 
