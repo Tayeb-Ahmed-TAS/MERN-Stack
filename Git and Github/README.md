@@ -41,6 +41,7 @@ The following table lists some basic Git commands along with their descriptions:
 | 13     | **Set u**          | `git push -u origin main`         | Sets the upstream for the current branch to the main branch on the remote repository. |
 | 14     | **Simple Push**    | `git push`                        | Pushes changes to the remote repository for the current branch.                       |
 | 15     | **Add and Commit** | `git commit -am "Some message"`   | Adds and commits changes in one command                                               |
+| 16     | **Pull**           | `git pull origin <branch_name>`   | Fetches and merges changes from the remote repository to your local repository        |
 
 ## Branch Commands
 
@@ -66,3 +67,29 @@ Merging is the process of combining changes from different branches. To merge a 
 ## Pull Request
 
 A **Pull Request (PR)** lets you tell about changes you've pushed to a branch in a repository on GitHub.
+
+To create a pull request:
+
+1. Push your changes to a branch in your remote repository.
+
+2. Go to the repository on GitHub.
+
+3. Click on the "Pull Requests" tab.
+
+4. Click the "New Pull Request" button.
+
+5. Select the branch you pushed your changes to and the branch you want to merge into.
+
+6. Review the changes and click "Create Pull Request".
+
+7. Add a title and description for your pull request, then click "Create Pull Request" again.
+
+Once you've created a pull request, others can review your changes, discuss them, and approve or request modifications before merging them into the main codebase.
+
+## Pull Changes
+
+Used to fetch and download content from a remote repo and immediately uodate the local repo to match that content.
+
+```bash
+git pull origin <branch_name>
+```
