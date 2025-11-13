@@ -1,0 +1,99 @@
+/* Make the document unscrollable and the div full height */
+
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80") no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden;
+}
+
+/* Make the div center from top */
+
+
+
+div {
+    text-align: center;
+    max-width: 650px;
+    height: 90vh;
+    margin: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+}
+
+ul {
+    padding: 40px 20px 0px 40px;
+    width: 100%;
+    max-height: 75%;
+    list-style: decimal;
+    overflow-y: auto !important;
+    margin-top: 20px;
+}
+
+ul::-webkit-scrollbar {
+    width: 8px;
+}
+
+ul::-webkit-scrollbar-thumb {
+    background: linear-gradient(60deg, #45a049, #a52a2a);
+    border-radius: 10px;
+}
+
+ul::-webkit-scrollbar-thumb:hover {
+    background: #45a049;
+}
+
+li {
+    text-align: left;
+    font-size: 20px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    /* Make the background like fully glass */
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    border-radius: 5px;
+    color: #000;
+}
+
+input {
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+button {
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add_btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.delete-btn {
+    float: right;
+    background-color: #a52a2a;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+}

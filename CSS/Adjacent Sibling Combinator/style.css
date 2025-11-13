@@ -1,0 +1,17 @@
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    text-decoration: underline;
+}
+
+p+h3 {
+    color: #a52a2a;
+    font-size: 1.5rem;
+}
+
+h3 {
+    color: #06816d;
+    font-size: 1.2rem;
+}
+
+/* Note: We use element1 + element2 to select the element2 that is immediately preceded by element1. In this case, we are selecting h3 elements that are immediately preceded by p elements. */

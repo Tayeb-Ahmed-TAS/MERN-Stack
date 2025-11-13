@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>University List</h1>
+
+        <div class="search">
+            <input type="text" id="state-input" placeholder="Enter state name" autocomplete="off">
+            <button id="search-button">Search</button>
+        </div>
+
+        <div class="total">
+            Total Universities: <span id="total-universities">0</span>
+        </div>
+
+        <div class="table_div">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sl</th>
+                        <th>University Name</th>
+                        <th>State</th>
+                        <th>Website</th>
+                    </tr>
+                </thead>
+
+                <tbody id="university-table-body">
+                    <!-- University data will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
