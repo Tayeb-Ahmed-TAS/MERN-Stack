@@ -42,6 +42,7 @@ The following table lists some basic Git commands along with their descriptions:
 | 14     | **Simple Push**    | `git push`                        | Pushes changes to the remote repository for the current branch.                       |
 | 15     | **Add and Commit** | `git commit -am "Some message"`   | Adds and commits changes in one command                                               |
 | 16     | **Pull**           | `git pull origin <branch_name>`   | Fetches and merges changes from the remote repository to your local repository        |
+| 17     | **Log**            | `git log`                         | Shows the commit history                                                              |
 
 ## Branch Commands
 
@@ -100,3 +101,75 @@ git pull origin <branch_name>
 An event that takes place when Git is unable to automatically resolve differences in code between two commits.
 
 This usually happens when multiple people are working on the same part of a file or when changes have been made to a file in both branches that are being merged. When a merge conflict occurs, Git will mark the file as conflicted and stop the merge process until the conflicts are resolved manually.
+
+To resolve a merge conflict, you need to open the conflicted file and look for the conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`). These markers indicate the conflicting changes from each branch. You will need to decide which changes to keep, modify, or combine, and then remove the conflict markers.
+
+After resolving the conflicts, you need to stage the changes using `git add <file_name>` and then commit the merge using `git commit`. Once the merge is committed, you can continue working with your code as usual.
+
+Then you can push the resolved changes to the remote repository using `git push origin <branch_name>` or `git push`.
+
+## Fixing Mistakes
+
+- **Case 1 :** Staged changes
+
+If you have staged changes that you want to unstage, you can use the following command:
+
+```bash
+git reset <file_name>
+```
+
+For unstaging all staged files, you can use:
+
+```bash
+git reset
+```
+
+This command will unstage the specified file, moving it back to the working directory without discarding any changes.
+
+- **Case 2 :** Committed changes (for one commit)
+
+If you have committed changes that you want to undo, you can use the following command to revert to the previous commit while keeping your changes in the working directory:
+
+```bash
+git reset HEAD~1
+```
+
+This command will move the HEAD pointer back by one commit, effectively undoing the last commit but preserving the changes in your working directory.
+
+- **Case 3 :** Committed changes (for many commits)
+
+If you want to undo multiple commits, you can specify the number of commits to go back. For example, to undo the last three commits, you can use:
+
+```bash
+git reset HEAD~3
+```
+
+Here, `3` will change based on how many commits you want to undo. This command will move the HEAD pointer back by the specified number of commits, keeping your changes in the working directory.
+
+### or
+
+```bash
+git reset <commit_hash>
+```
+
+This command will reset your repository to the specified commit hash, effectively undoing all commits made after that commit while preserving the changes in your working directory.
+
+### or
+
+```bash
+git reset --hard <commit_hash>
+```
+
+This command will reset your repository to the specified commit hash and discard all changes made after that commit. Use this command with caution, as it will permanently delete any changes made after the specified commit.
+
+**Note:** `<commit_hash>` can be found using the `git log` command, which displays the commit history along with their hashes. It is the commit id shown in the log. like, `3202752b6ad051f51c9035ee0df37094e47f1118`
+
+## Forking
+
+A **fork** is a new repository that shares code and visibility settings with the original **upstream** repository.
+
+**Fork** is a rough copy.
+
+You can fork a repository by clicking the "Fork" button on the repository's GitHub page. This will create a copy of the repository under your GitHub account, allowing you to make changes without affecting the original repository.
+
+You can then clone your forked repository to your local machine, make changes, and push them back to your forked repository on GitHub. If you want to contribute your changes back to the original repository, you can create a pull request from your forked repository to the upstream repository.
