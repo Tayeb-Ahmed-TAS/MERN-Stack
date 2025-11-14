@@ -86,13 +86,34 @@ button:hover {
     cursor: pointer;
 }
 
-.card:nth-child(odd) {
+/* .card:nth-child(odd) {
 
     background: linear-gradient(310deg, #667eea, #764ba2);
 }
 
 .card:nth-child(even) {
     background: linear-gradient(310deg, #bdc3c7, #2c3e50);
+} */
+
+.card[data-type="Visa"],
+.card[data-type="Visa Retired"] {
+    background: linear-gradient(85deg, #4b1f73 0%, #7b2b7d 25%, #c0406f 55%, #ff6a35 100%);
+}
+
+.card[data-type="MasterCard"] {
+    background-image: linear-gradient(to bottom right, #6a0dad, #1d1135);
+}
+
+.card[data-type="American Express"] {
+    background: linear-gradient(85deg, #1e3c72 0%, #2a5298 100%);
+}
+
+.card[data-type="Discover Card"] {
+    background: linear-gradient(85deg, #f7971e 0%, #ffd200 100%);
+}
+
+.card[data-type="JCB"] {
+    background: linear-gradient(85deg, #11998e 0%, #38ef7d 100%);
 }
 
 .card .card_left {
@@ -197,5 +218,12 @@ button:hover {
         top: -100px !important;
     }
 
+    .name p {
+        top: -80px;
+    }
+
+    .name h3 {
+        top: -55px;
+    }
 
 }

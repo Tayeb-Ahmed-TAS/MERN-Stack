@@ -22,6 +22,7 @@ function showData(cardArr) {
   for (col of cardArr) {
     let card_div = document.createElement("div");
     card_div.classList.add("card");
+    card_div.setAttribute("data-type", col.type);
 
     let card_left_div = document.createElement("div");
     card_left_div.classList.add("card_left");
