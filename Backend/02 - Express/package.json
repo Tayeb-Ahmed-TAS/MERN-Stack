@@ -1,0 +1,15 @@
+{
+  "name": "02---express",
+  "version": "1.0.0",
+  "description": "A **library** is a collection of pre-written code that can be used to perform specific tasks.",
+  "license": "ISC",
+  "author": "Tayeb Ahmed",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
