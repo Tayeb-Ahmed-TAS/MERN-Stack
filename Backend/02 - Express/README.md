@@ -176,13 +176,74 @@ app.use((req, res) => {
 });
 ```
 
+### 1.4.2 Path Parameters
+
+Path parameters are used to capture values specified at their position in the URL.
+
+In the example below, `:var_name` is a path parameter.
+
+```javascript
+app.get("/:var_name", (req, res) => {
+  const varName = req.params.var_name;
+  res.send(`You have requested for ${varName}`);
+});
+```
+
+### 1.4.3 Path Parameters (Multiple)
+
+```javascript
+app.get("/:var1/:var2", (req, res) => {
+  const var1 = req.params.var1;
+  const var2 = req.params.var2;
+  res.send(`You have requested for ${var1} and ${var2}`);
+});
+```
+
+#### Or
+
+```javascript
+app.get("/:var1/var2", (req, res) => {
+  const { var1, var2 } = req.params;
+  res.send(`You have requested for ${var1} and ${var2}`);
+});
+```
+
 ---
 
-## Nodemon
+# Query Strings
+
+**Query Strings** are used to send data to the server as key-value pairs in the URL to search or filter results.
+
+`/search` is the route and `?key1=value1&key2=value2` is the query string.
+
+```javascript
+app.get("/search", (req, res) => {
+  let { q } = req.query;
+  res.send(`Results for ${q}`);
+});
+```
+
+### Example URL with Query String
+
+To search for **apple** for the above route, the URL would be:
+
+```url
+http://localhost:3000/search?q=apple
+```
+
+To search for **smartphone** of brand **apple** for the above route, the URL would be:
+
+```url
+http://localhost:3000/search?q=smartphone&brand=apple
+```
+
+---
+
+# Nodemon
 
 To **automatically restart server** with code changes.
 
-### Install nodemon globally
+## Install nodemon globally
 
 ```bash
 npm install -g nodemon
