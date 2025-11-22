@@ -78,7 +78,9 @@ npm install express
 
 ---
 
-## Creating a Simple Express Server
+# 1. Getting Started with Express
+
+## 1.1 Creating a Simple Express Server (Listen)
 
 Create a file named `app.js` and add the following code:
 
@@ -105,6 +107,100 @@ You should see the message: `Server is running on http://localhost:3000`
 Open your browser and navigate to `http://localhost:3000` to see your server in action.
 
 ### Close the server
+
+Press `Ctrl + C` in the terminal where the server is running.
+
+---
+
+## 1.2 Handling Requests
+
+`app.use()` method is used to handle incoming requests.
+
+```javascript
+import express from "express";
+const app = express();
+const port = 3000;
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
+
+app.use((req, res) => {
+  res.send("Request received");
+});
+```
+
+## 1.3 Sending Responses (Parsing Request)
+
+- `req` - Represents the incoming request object.
+
+- `res` - Represents the outgoing response object.
+
+`res.send()` method is used to send a response back to the client.
+
+```javascript
+import express from "express";
+const app = express();
+const port = 3000;
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
+
+app.use((req, res) => {
+  res.send("Hello, World!");
+});
+```
+
+## 1.4 Routing
+
+**Routing** is the process of selecting a path for traffic in a network or between or accross multiple networks.
+
+`app.get()` method is used to define a route for handling GET requests.
+
+```javascript
+app.get("/apple", (req, res) => {
+  res.send({
+    name: "Apple",
+    color: "Red",
+    taste: "Sweet",
+  });
+});
+```
+
+### 1.4.1 If wrong route is given
+
+```javascript
+app.use((req, res) => {
+  res.send("This page does not exist");
+});
+```
+
+---
+
+## Nodemon
+
+To **automatically restart server** with code changes.
+
+### Install nodemon globally
+
+```bash
+npm install -g nodemon
+```
+
+### Check nodemon version
+
+```bash
+nodemon -v
+```
+
+### Run server using nodemon
+
+```bash
+nodemon app.js
+```
+
+### Stop nodemon server
 
 Press `Ctrl + C` in the terminal where the server is running.
 
