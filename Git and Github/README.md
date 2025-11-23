@@ -170,6 +170,17 @@ This command will reset your repository to the specified commit hash and discard
 
 **Note:** `<commit_hash>` can be found using the `git log` command, which displays the commit history along with their hashes. It is the commit id shown in the log. like, `3202752b6ad051f51c9035ee0df37094e47f1118`
 
+## git reflog
+
+The `git reflog` command is used to view the history of changes made to the HEAD reference in your Git repository. It shows a log of all the commits that have been made, including those that may not be reachable through the current branch history.
+
+You can use the `git reflog` command to find the commit hash of a previous state of your repository. Once you have the commit hash, you can use the `git reset` command to revert your repository to that state.
+
+```bash
+git reflog
+git reset --hard <commit_hash>
+```
+
 ## Forking
 
 A **fork** is a new repository that shares code and visibility settings with the original **upstream** repository.
