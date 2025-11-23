@@ -58,6 +58,16 @@ cd MyNpmProject
 npm init
 ```
 
+### To Initialize with default values
+
+```bash
+mkdir MyNpmProject
+
+cd MyNpmProject
+
+npm init -y
+```
+
 ## Global Installation
 
 It is less common to install packages globally, but it can be useful for command-line tools.
