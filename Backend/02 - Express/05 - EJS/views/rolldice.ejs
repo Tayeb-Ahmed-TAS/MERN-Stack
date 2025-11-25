@@ -10,6 +10,14 @@
 <body>
     <h1>Your Dice Value is: <%= diceVal %></h1>
 
+    <% if(diceVal == 6) { %>
+    <h2>Congratulations! You rolled a 6!</h2>
+    <% } else { %>
+    <h2>Try Again!</h2>
+    <% } %>
+
+    <a href="/">Home</a>
+
 </body>
 
 </html>

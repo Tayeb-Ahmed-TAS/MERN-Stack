@@ -36,7 +36,17 @@
 
     <button>Click me!</button>
 
-    <h4>Done !</h4>
+    <h2>Fruits List: </h2>
+
+    <ul>
+        <% const fruits = ["Apple", "Banana", "Orange", "Mango"]; %>
+
+        <% for(fruit of fruits) { %>
+        <li> <%= fruit %> </li>
+        <% } %>
+    </ul>
+
+    <a href="/diceroll">Roll Dice</a>
 
 </body>
 

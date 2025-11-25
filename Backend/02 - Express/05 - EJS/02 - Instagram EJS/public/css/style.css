@@ -1,0 +1,15 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+}
+
+.footer {
+    margin-top: 65px;
+    border-top: 2px solid #bbb;
+    padding-top: 20px;
+}
