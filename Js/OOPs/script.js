@@ -37,11 +37,12 @@ const p3 = new Teacher("Mr. Brown", 45, "Math", ["Calculus", "Algebra"]);
 p3.greet();
 console.log(p3);
 
-const p4_subjects = ["Quantum Mechanics", "Thermodynamics", "Optics"];
-const p4 = new Teacher("Dr. Green", 50, "Physics", [
+const p4_subjects = [
   "Quantum Mechanics",
   "Thermodynamics",
   "Optics",
-]);
+  "Electromagnetism",
+];
+const p4 = new Teacher("Dr. Green", 50, "Physics", p4_subjects);
 p4.greet();
 console.log(p4);
