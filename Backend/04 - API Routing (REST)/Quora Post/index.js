@@ -20,18 +20,18 @@ app.set("views", path.join(__dirname, "views"));
 let posts = [
   {
     id: uuidv4(),
-    username: "apnacollege",
-    content: "I love coding!",
+    username: "tony_stark",
+    content: "Wake up, Jarvis. Daddy's home.",
   },
   {
     id: uuidv4(),
-    username: "john_doe",
-    content: "Life is beautiful when you code!",
+    username: "peter_parker",
+    content: "I need a new bag Aunt May.",
   },
   {
     id: uuidv4(),
-    username: "maria_jane",
-    content: "Why not try full-stack development?",
+    username: "steve_rogers",
+    content: "Avengers, assemble!",
   },
 ];
 
@@ -104,7 +104,7 @@ app.delete("/posts/:id", (req, res) => {
 
   // filter out the post with the given id and update the posts array
   posts = posts.filter((p) => p.id !== id);
-  
+
   res.redirect("/posts");
 });
 
