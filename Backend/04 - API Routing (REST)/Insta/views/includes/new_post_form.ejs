@@ -1,0 +1,27 @@
+    <section id="create_post" class="section-m1">
+        <div class="container">
+            <div class="new_post_box">
+                <h2>Create New Post</h2>
+
+                <form method="post" action="/ig" enctype="multipart/form-data">
+                    <div>
+                        <label for="user_name">Username: </label>
+                        <input type="text" id="user_name" name="username" placeholder="Enter your username"
+                            autocomplete="off" required />
+                    </div>
+                    <div>
+                        <label for="image_url">Upload Image: </label>
+                        <input type="file" id="image_url" name="img" required />
+                    </div>
+                    <div>
+                        <label for="caption_txt">Caption: </label>
+                        <textarea name="caption" id="caption_txt" placeholder="Write your caption here..."></textarea>
+                    </div>
+
+                    <div class="post_btn_div">
+                        <button type="submit" class="btn">Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
