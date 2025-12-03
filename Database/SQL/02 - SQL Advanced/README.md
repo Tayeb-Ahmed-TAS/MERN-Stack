@@ -255,9 +255,9 @@ Assume the following `student` table:
 
 **Question:** Add a new column `grade`, assign grades such that:
 
-        - marks > 80, grade = "**O**"
-        - marks 70 - 80, grade = "**A**"
-        - marks 60 - 70, grade = "**B**"
+        - marks > 80, grade = "O"
+        - marks 70 - 80, grade = "A"
+        - marks 60 - 70, grade = "B"
 
 **Solution:**
 
