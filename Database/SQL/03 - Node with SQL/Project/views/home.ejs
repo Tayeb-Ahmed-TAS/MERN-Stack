@@ -11,9 +11,15 @@
 <body>
 
     <h2>The total number of users are: <%= count %> </h2>
-    <form method="GET" action="/user/new">
-        <button>Join us today!</button>
-    </form>
+    <div class="btns">
+        <form method="GET" action="/user/new">
+            <button>Join us today!</button>
+        </form>
+
+        <form method="GET" action="/user">
+            <button>View Users</button>
+        </form>
+    </div>
 
 </body>
 
