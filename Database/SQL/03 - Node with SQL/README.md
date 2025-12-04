@@ -27,3 +27,32 @@ To connect Node.js with MySQL.
 ```bash
 npm i mysql2
 ```
+
+At 1st create a database in MySQL Workbench named `delta_app`.
+
+Then use the following code to connect Node.js with MySQL database.
+
+```sql
+CREATE DATABASE delta_app;
+```
+
+Then use the following code to connect Node.js with MySQL database.
+
+```js
+// index.js
+---
+    ---
+
+const mysql = require("mysql2");
+
+// Create the connection to database
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  database: "test",
+  password: "your_database_password",
+});
+
+        ---
+---
+```
