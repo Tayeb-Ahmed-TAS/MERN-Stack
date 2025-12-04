@@ -113,20 +113,35 @@ app.get("/user/new", (req, res) => {
 app.post("/user", (req, res) => {
   let { username, email, password, confirm_password } = req.body;
   let id = uuidv4();
-  let q = `INSERT INTO user (id, username, email, password) VALUES ('${id}', '${username}', '${email}', '${password}')`;
+  // let q2 = `INSERT INTO user (id, username, email, password) VALUES ('${id}', '${username}', '${email}', '${password}')`;
+  let q1 = `SELECT email FROM user WHERE email = '${email}'`;
 
-  if (password !== confirm_password) {
-    res.send("Passwords doesn't match!");
-  } else {
-    try {
-      connection.query(q, (err, result) => {
-        console.log("User Added !");
-        res.redirect("/user");
-      });
-    } catch (err) {
-      console.log(err);
-      res.send("Some Error in DB");
-    }
+  // same email check first if email is unique then check for password match
+  try {
+    connection.query(q1, (err, result) => {
+      if (err) throw err;
+      let existingUser = result[0];
+      if (existingUser) {
+        // If email already exists
+        res.send("Email already registered!");
+      } else {
+        // If email is not registered then check for password match
+        if (password !== confirm_password) {
+          res.send("Passwords doesn't match!");
+        } else {
+          // If password matches then create the user
+          let q2 = `INSERT INTO user (id, username, email, password) VALUES ('${id}', '${username}', '${email}', '${password}')`;
+          connection.query(q2, (err, result) => {
+            if (err) throw err;
+            console.log("User Added !");
+            res.redirect("/user");
+          });
+        }
+      }
+    });
+  } catch (err) {
+    console.log(err);
+    res.send("Some Error in DB");
   }
 });
 
