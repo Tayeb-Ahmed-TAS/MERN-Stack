@@ -1,0 +1,18 @@
+{
+  "name": "03---node-with-sql",
+  "version": "1.0.0",
+  "description": "**Faker** is a library that generates fake data for you. It can be used to populate databases, create realistic test data, and more.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Tayeb Ahmed",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@faker-js/faker": "^10.1.0",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1"
+  }
+}
