@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New User</title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+
+    <h2>Create a New User</h2>
+    <form method="POST" action="/user">
+        <label>Username: </label>
+        <br><br>
+        <input type="text" name="username" autocomplete="off" required />
+        <br><br>
+        <label>Email: </label>
+        <br><br>
+        <input type="email" name="email" autocomplete="off" required />
+        <br><br>
+        <label>Password: </label>
+        <br><br>
+        <input type="password" name="password" required />
+        <br><br>
+        <label>Confirm Password: </label>
+        <br><br>
+        <input type="password" name="confirm_password" required />
+        <br><br>
+        <button>Create User</button>
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+table,
+tr,
+td,
+th {
+    border: 1px solid #000;
+}
+
+th,
+td {
+    padding: 10px 15px;
+}
+
+button {
+    cursor: pointer;
+    padding: 5px 8px;
+}
+
+input {
+    padding: 8px;
+    margin: 5px 0;
+}
