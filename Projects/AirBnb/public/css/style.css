@@ -11,6 +11,14 @@ body {
     flex: 1;
 }
 
+/* Removing inc / dec button from input[type=number] fields */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 /* Navbar */
 .navbar {
     height: 5rem;
