@@ -126,6 +126,8 @@ app.use((req, res, next) => {
 });
 ```
 
+`npm` package: [morgan](https://www.npmjs.com/package/morgan) does the same job.
+
 ### 5.2 Page Not Found Middleware
 
 ```javaScript
@@ -143,8 +145,6 @@ app.use((req, res) => {
 ```
 
 > **NOTE:** Use this middleware at the end of all other routes and middlewares, and before the server starts listening. So that if no route matches, this middleware will handle the request.
-
-`npm` package: [morgan](https://www.npmjs.com/package/morgan) does the same job.
 
 ## 6. Middleware with specific routes
 
