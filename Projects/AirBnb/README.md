@@ -34,3 +34,7 @@ app.engine("ejs", ejsMate);
 ```
 
 Then, create a `views/partials` directory to store partial templates like header and footer. Create `header.ejs` and `footer.ejs` files in that directory.
+
+## Part C (Error Handling, Client and Server-Side Validation)
+
+[ERRORS_AND_VALIDATION.md](./Documentations/ERRORS_AND_VALIDATION.md)
