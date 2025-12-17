@@ -130,3 +130,41 @@ To create the upper model [One to Squillions/posts.js](One%20to%20Squillions/pos
 | **> 1000**               | **One to Squillions** | Extremely large number of child documents | Social media posts, likes, followers   | Store reference to parent in child documents  |
 
 ---
+
+## Handling Deletions in Relationships
+
+Using **_Mongoose Middleware_**.
+
+[Mongoose Middleware](https://mongoosejs.com/docs/middleware.html) -> Query Middleware
+We can use **2** middlewares:
+
+- **Pre** - run before the query is executed [visit](https://mongoosejs.com/docs/middleware.html#pre)
+
+- **Post** - run after the query is executed [visit](https://mongoosejs.com/docs/middleware.html#post)
+
+> **Remember that,** `findByIdAndDelete()` internally calls `findOneAndDelete()` method. So, we have to use middleware on `findOneAndDelete()` method. Query middleware don't have `findByIdAndDelete()` and `findByIdAndUpdate()` methods. Instead, they use `findOneAndDelete()` and `findOneAndUpdate()` methods respectively. But we can still call `findByIdAndDelete()` and `findByIdAndUpdate()` methods as usual because they internally call `findOneAndDelete()` and `findOneAndUpdate()` methods.
+
+### Pre Middleware
+
+Syntax:
+
+```javascript
+Schema_name.pre("methodName", function (next) {
+  // Middleware logic
+  next();
+});
+```
+
+We can use pre middleware to delete all associated child documents before deleting a parent document.
+
+### Post Middleware
+
+Syntax:
+
+```javascript
+Schema_name.post("methodName", function (data) {
+  // Middleware logic
+});
+```
+
+We can use post middleware to log information or perform actions after a parent document has been deleted.
