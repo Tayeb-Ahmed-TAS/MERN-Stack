@@ -168,3 +168,7 @@ Schema_name.post("methodName", function (data) {
 ```
 
 We can use post middleware to log information or perform actions after a parent document has been deleted.
+
+### Example
+
+[del_customers.js](Handling%20Deletion/del_customers.js)
