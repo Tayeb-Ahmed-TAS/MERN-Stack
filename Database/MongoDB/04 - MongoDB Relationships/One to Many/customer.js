@@ -43,7 +43,7 @@ const addCustomer = async () => {
   await cust1.save();
 };
 
-// addCustomer();
+addCustomer();
 
 // Function to add sample orders to the database
 const addOdrers = async () => {
@@ -54,4 +54,4 @@ const addOdrers = async () => {
   ]);
 };
 
-// addOdrers();
+addOdrers();
