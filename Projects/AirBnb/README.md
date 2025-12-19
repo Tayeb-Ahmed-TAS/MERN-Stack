@@ -1,6 +1,6 @@
 # AirBnb Project
 
-## Phase 1
+# Phase 1
 
 ## Part A (Basic setup and CRUD operations)
 
@@ -42,3 +42,13 @@ Then, create a `views/partials` directory to store partial templates like header
 [ERRORS_AND_VALIDATION.md](./Documentations/ERRORS_AND_VALIDATION.md)
 
 ---
+
+# Phase 2
+
+## Part A (Review and Ratings System)
+
+### Route Structure
+
+| **HTTP Method** | **Endpoint**            | **Description**     | **Route**         |
+| --------------- | ----------------------- | ------------------- | ----------------- |
+| **POST**        | `/listings/:id/reviews` | Create a new review | **Create Review** |
