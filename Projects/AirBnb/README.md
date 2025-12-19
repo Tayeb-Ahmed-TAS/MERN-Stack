@@ -1,5 +1,7 @@
 # AirBnb Project
 
+## Phase 1
+
 ## Part A (Basic setup and CRUD operations)
 
 ## Route Structure
@@ -38,3 +40,5 @@ Then, create a `views/partials` directory to store partial templates like header
 ## Part C (Error Handling, Client and Server-Side Validation)
 
 [ERRORS_AND_VALIDATION.md](./Documentations/ERRORS_AND_VALIDATION.md)
+
+---
