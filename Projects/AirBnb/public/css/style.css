@@ -11,6 +11,10 @@ body {
     flex: 1;
 }
 
+textarea {
+    resize: none !important;
+}
+
 /* Removing inc / dec button from input[type=number] fields */
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -179,4 +183,16 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .star_rating_show {
     font-size: 0.8rem;
+}
+
+.avg_rate {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    gap: 0.2rem;
+}
+
+.avg_rate .star {
+    color: #222;
+    font-size: 1rem;
 }
