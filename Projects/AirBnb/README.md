@@ -49,6 +49,29 @@ Then, create a `views/partials` directory to store partial templates like header
 
 ### Route Structure
 
-| **HTTP Method** | **Endpoint**            | **Description**     | **Route**         |
-| --------------- | ----------------------- | ------------------- | ----------------- |
-| **POST**        | `/listings/:id/reviews` | Create a new review | **Create Review** |
+| **HTTP Method** | **Endpoint**                      | **Description**                                                     | **Route**         |
+| --------------- | --------------------------------- | ------------------------------------------------------------------- | ----------------- |
+| **POST**        | `/listings/:id/reviews`           | Create a new review                                                 | **Create Review** |
+| **DELETE**      | `/listings/:id/reviews/:reviewId` | Delete a review and also remove it from the listing's reviews array | **Delete Review** |
+
+## To delete a review from a listing array in MongoDB, you can use the `$pull` operator
+
+The `$pull` operator removes from an existing array all instances of a value or values that match a specified condition.
+
+Syntax:
+
+```javascript
+$pull: { <field>: <value> }
+```
+
+```javascript
+app.delete(
+  "/listings/:id/reviews/:reviewId",
+  wrapAsync(async (req, res) => {
+    let { id, reviewId } = req.params;
+    await Listing.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
+    await Review.findByIdAndDelete(reviewId);
+    res.redirect(`/listings/${id}`);
+  })
+);
+```

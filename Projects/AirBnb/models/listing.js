@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const Review = require("./review.js");
 
 const default_image =
   "https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png";
@@ -24,6 +25,13 @@ const listingSchema = new Schema({
       ref: "Review",
     },
   ],
+});
+
+// Middleware to remove associated reviews when a listing is deleted
+listingSchema.post("findOneAndDelete", async (listing) => {
+  if (listing) {
+    await Review.deleteMany({ _id: { $in: listing.reviews } });
+  }
 });
 
 const Listing = mongoose.model("Listing", listingSchema);

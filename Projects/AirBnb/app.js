@@ -143,6 +143,18 @@ app.post(
   })
 );
 
+// Delete Review Route
+
+app.delete(
+  "/listings/:id/reviews/:reviewId",
+  wrapAsync(async (req, res) => {
+    let { id, reviewId } = req.params;
+    await Listing.findByIdAndUpdate(id, { $pull: { reviews: reviewId } }); // Removing review reference from listing's reviews array
+    await Review.findByIdAndDelete(reviewId); // Deleting review from Review collection
+    res.redirect(`/listings/${id}`);
+  })
+);
+
 // app.get("/testListing", async (req, res) => {
 //   const sampleListing = new Listing({
 //     title: "Cozy Cottage",
