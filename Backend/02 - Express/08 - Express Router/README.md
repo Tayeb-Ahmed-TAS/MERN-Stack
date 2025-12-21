@@ -2,6 +2,8 @@
 
 Express Router is a way to organize your Express application by separating routes into different files. This helps keep your code clean and manageable, especially as your application grows.
 
+[Express Router Documentation](https://expressjs.com/en/guide/routing.html#express-router) | [Express Router API](https://expressjs.com/en/4x/api.html#router)
+
 ---
 
 ## 📌 What You Will Learn
