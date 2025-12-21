@@ -75,3 +75,9 @@ app.delete(
   })
 );
 ```
+
+## Part B (Routes separation)
+
+Separates the `listings` and `reviews` routes into their own files for better organization.
+
+## Part C
