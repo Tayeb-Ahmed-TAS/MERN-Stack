@@ -36,6 +36,8 @@ app.get("/getcookies", (req, res) => {
 
 To read cookies sent by the client, we can use the `cookie-parser` middleware. It is basically a npm package.
 
+[cookie-parser - npm](https://www.npmjs.com/package/cookie-parser)
+
 ### Install cookie-parser
 
 ```bash
