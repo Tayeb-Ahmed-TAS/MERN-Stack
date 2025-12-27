@@ -54,7 +54,7 @@ It stores data temporarily on the server side and associates it with a unique se
       ┌───────────┐        ┌───────────┐
       │  CLIENT   │        │  CLIENT   │
       │ sessionId │        │ sessionId │
-      │   101 🔴  │        │  102      │
+      │   101     │        │  102      │
       └───────────┘        └───────────┘
 
 ```
