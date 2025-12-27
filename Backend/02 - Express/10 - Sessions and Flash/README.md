@@ -108,3 +108,74 @@ app.use(
 ## Compatible Session Stores
 
 [Documentation](https://www.npmjs.com/package/express-session#compatible-session-stores)
+
+---
+
+## Storing & Using Info
+
+To store information in the session, we can use the `req.session` object.
+
+```javascript
+app.get("/register", (req, res) => {
+  let { name = "anonymous" } = req.query;
+  req.session.name = name;
+  res.redirect("/hello");
+});
+
+app.get("/hello", (req, res) => {
+  res.send(`Hello, ${req.session.name}`);
+});
+```
+
+> Here, in `req.session` object we created a custom property `req.session.name` to store and use the `name` of the user.
+
+---
+
+# Connect Flash
+
+The **Flash** is a special area of the session used for storing messages. Messages are written to the flash and cleared after being displayed to the user.
+
+The flash is typically used in combination with redirects, ensuring that the message is displayed on the next page the user visits.
+
+It is a npm package called [**connect-flash**](https://www.npmjs.com/package/connect-flash).
+
+It is important to use **express-session** before using **connect-flash** since flash messages are stored in the session.
+
+### Install connect-flash package
+
+```bash
+npm i connect-flash
+```
+
+### Require
+
+```javascript
+const flash = require("connect-flash");
+```
+
+### Use
+
+```javascript
+app.use(flash());
+```
+
+It requires two parameters: `key` and `message`. `key` is used to identify the type of message (e.g., 'success', 'error'), and `message` is the actual message content.
+
+```javascript
+req.flash("success", "You have successfully logged in.");
+```
+
+To retrieve and display flash messages, we use the same `key` that was used to store the message.
+
+```javascript
+app.get("/register", (req, res) => {
+  let { name = "anonymous" } = req.query;
+  req.session.name = name;
+  req.flash("success", "User registered successfully!");
+  res.redirect("/hello");
+});
+
+app.get("/hello", (req, res) => {
+  res.render("page.ejs", { name: req.session.name, msg: req.flash("success") });
+});
+```
