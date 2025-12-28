@@ -262,3 +262,26 @@ app.get("/hello", (req, res) => {
 ```
 
 ---
+
+## Cookie in Sessions
+
+[Documentation](https://www.npmjs.com/package/express-session#cookie)
+
+- `expires`: Sets the expiration date of the cookie.
+- `maxAge`: Sets the maximum age of the cookie in milliseconds.
+
+```javascript
+const sessionOptions = {
+  secret: "mysupersecretcode",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    expires: Date.now() + 7 * 24 * 60 * 60 * 1000, // 1 week from now
+                       // d    h    m    s    ms
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 1 week
+    httpOnly: true, // prevents client-side JS from reading the cookie. For security
+  },
+};
+```
+
+---
