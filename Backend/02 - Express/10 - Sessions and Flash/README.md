@@ -179,3 +179,86 @@ app.get("/hello", (req, res) => {
   res.render("page.ejs", { name: req.session.name, msg: req.flash("success") });
 });
 ```
+
+## res.locals
+
+It is a better practice to use `res.locals` to make flash messages available in all views without passing them explicitly each time.
+
+[Documentation](https://expressjs.com/en/4x/api.html#res.locals)
+
+```javascript
+app.use((req, res, next) => {
+  res.locals.messages = req.flash("success");
+  next();
+});
+```
+
+### Example
+
+```javascript
+app.get("/register", (req, res) => {
+  let { name = "anonymous" } = req.query;
+  req.session.name = name;
+
+  if (name === "anonymous") {
+    req.flash("error", "User not registered!");
+  } else {
+    req.flash("success", "User registered successfully!");
+  }
+
+  res.redirect("/hello");
+});
+
+app.get("/hello", (req, res) => {
+  res.locals.successMsg = req.flash("success");
+  res.locals.errorMsg = req.flash("error");
+  res.render("page.ejs", { name: req.session.name });
+});
+```
+
+> We can now access `successMsg` and `errorMsg` directly in the EJS template without passing them explicitly.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <%= successMsg %> <%= errorMsg %>
+    <h1>Hello, <%= name %></h1>
+  </body>
+</html>
+```
+
+# Best way to use Flash Messages
+
+```javascript
+app.use((req, res, next) => {
+  res.locals.successMsg = req.flash("success");
+  res.locals.errorMsg = req.flash("error");
+  next();
+});
+
+app.get("/register", (req, res) => {
+  let { name = "anonymous" } = req.query;
+  req.session.name = name;
+
+  if (name === "anonymous") {
+    req.flash("error", "User not registered!");
+  } else {
+    req.flash("success", "User registered successfully!");
+  }
+
+  res.redirect("/hello");
+});
+
+app.get("/hello", (req, res) => {
+  res.render("page.ejs", { name: req.session.name });
+});
+```
+
+---
