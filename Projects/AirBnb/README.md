@@ -80,4 +80,6 @@ app.delete(
 
 Separates the `listings` and `reviews` routes into their own files for better organization.
 
-## Part C
+## Part C (Flash Messages)
+
+Flash messages are used to display temporary messages to users, such as success or error notifications. They are typically stored in the session and removed after being displayed once.

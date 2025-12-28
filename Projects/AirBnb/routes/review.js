@@ -4,7 +4,7 @@ const Listing = require("../models/listing.js");
 const Review = require("../models/review.js");
 const wrapAsync = require("../utils/wrapAsync.js");
 const ExpressError = require("../utils/ExpressError.js");
-const {  reviewSchema } = require("../schema.js");
+const { reviewSchema } = require("../schema.js");
 
 // Middleware to validate review data using Joi schema
 const validateReview = (req, res, next) => {
@@ -30,6 +30,7 @@ router.post(
 
     // Save both listing and review
     await newReview.save();
+    req.flash("success", "New Review Created!");
     await listing.save();
 
     res.redirect(`/listings/${id}`);
@@ -44,6 +45,7 @@ router.delete(
     let { id, reviewId } = req.params;
     await Listing.findByIdAndUpdate(id, { $pull: { reviews: reviewId } }); // Removing review reference from listing's reviews array
     await Review.findByIdAndDelete(reviewId); // Deleting review from Review collection
+    req.flash("success", "Review Deleted!");
     res.redirect(`/listings/${id}`);
   })
 );
