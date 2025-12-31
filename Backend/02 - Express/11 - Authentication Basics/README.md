@@ -128,3 +128,101 @@ npm install passport-local-mongoose
 [npm package](https://www.npmjs.com/package/passport-local-mongoose)
 
 It is usefull in MongoDB database to simplify building username and password login with Passport.
+
+### Passport Local Mongoose Instance Methods
+
+[Documentation Link](https://www.npmjs.com/package/passport-local-mongoose#instance-methods)
+
+| Sl  | **Method**       | **Small Description**                          |
+| --- | ---------------- | ---------------------------------------------- |
+| 1   | `setPassword`    | Sets the password for a user instance.         |
+| 2   | `changePassword` | Changes the password for a user instance.      |
+| 3   | `authenticate`   | Authenticates a user instance.                 |
+| 4   | `resetAttempts`  | Resets the login attempts for a user instance. |
+
+### Static Methods
+
+[Documentation Link](https://www.npmjs.com/package/passport-local-mongoose#static-methods)
+
+| Sl  | **Method**        | **Small Description**                                     |
+| --- | ----------------- | --------------------------------------------------------- |
+| 1   | `rauthenticate`   | Returns a function that is used to authenticate a user.   |
+| 2   | `register`        | Registers a new user instance with a given password.      |
+| 3   | `serializeUser`   | Used by Passport to serialize users into the              |
+| 4   | `deserializeUser` | Used by Passport to deserialize users out of the session. |
+| 5   | `findByUsername`  | Finds a user instance by username.                        |
+| 6   | `createStrategy`  | Creates a Passport Local strategy based on the model.     |
+
+### Plugin Usage
+
+```javascript
+---
+    ---
+
+const passportLocalMongoose = require('passport-local-mongoose');
+
+---
+    ---
+
+schema_name.plugin(passportLocalMongoose);
+
+    ---
+---
+```
+
+### Configuring Strategy
+
+> **Note:** Session is required to use Passport.
+
+`passport.initialize()` and `passport.session()` middlewares are required to initialize Passport and to use persistent login sessions.
+
+> `passport.initialize()` is a middleware that initializes Passport.
+>
+> Add these lines before defining any routes and after session middleware.
+
+```javascript
+app.use(passport.initialize());
+app.use(passport.session());
+```
+
+> **Note:** `passport.session()` middleware: A web application needs the ability to identify users as they browse from page to page. This series of requests and responses, each associated with the same user, is known as a **session**. So that, users don't have to log in again and again on every request, every page, every resource access.
+
+## Use passport-local
+
+```javascript
+const LocalStrategy = require("passport-local");
+
+passport.use(new LocalStrategy(User.authenticate()));
+```
+
+> Here, `User.authenticate()` is a method added by passport-local-mongoose to User model and `User` is the mongoose model.
+
+### We also need to use following 2 lines
+
+```javascript
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+```
+
+## To save user info
+
+```javascript
+app.get("/demouser", async (req, res) => {
+  let fakeUser = new User({
+    email: "example@demo.com",
+    username: "demouser",
+  });
+
+  await User.register(fakeUser, "demopassword");
+});
+```
+
+> Here, `User.register()` is a static method added by passport-local-mongoose to User model to register a new user instance with a given password. It takes two arguments, first is user instance and second is password in plain text. It hashes the password and stores the hashed password in the database.
+>
+> It automatically checks if the username already exists in the database. If it exists, it throws an error.
+
+**Passport** uses **pdkdf2** hashing algorithm by default to hash passwords.
+
+# Point to Remember
+
+`hash` is the `password` after applying hashing function in Database.
