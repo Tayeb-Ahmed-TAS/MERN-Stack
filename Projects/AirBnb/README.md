@@ -83,3 +83,34 @@ Separates the `listings` and `reviews` routes into their own files for better or
 ## Part C (Flash Messages)
 
 Flash messages are used to display temporary messages to users, such as success or error notifications. They are typically stored in the session and removed after being displayed once.
+
+## Part D (User Authentication)
+
+### Sign Up
+
+| **HTTP Method** | **Endpoint** | **Description**        | **Route**             |
+| --------------- | ------------ | ---------------------- | --------------------- |
+| **GET**         | `/signup`    | Show registration form | **Show Signup Route** |
+| **POST**        | `/signup`    | Handle user signup     | **Create User Route** |
+
+### Login
+
+| **HTTP Method** | **Endpoint** | **Description**   | **Route**            |
+| --------------- | ------------ | ----------------- | -------------------- |
+| **GET**         | `/login`     | Show login form   | **Show Login Route** |
+| **POST**        | `/login`     | Handle user login | **Login User Route** |
+
+**Note:** To authenticate user exists or not we need to use a middleware `passport.authenticate()`. It takes the strategy as the first argument like "local" and an options object as the second argument.
+
+```javascript
+app.post(
+  "/login",
+  passport.authenticate("local", {
+    failureFlash: true,
+    failureRedirect: "/login",
+  }),
+  (req, res) => {
+    // Further code
+  }
+);
+```
