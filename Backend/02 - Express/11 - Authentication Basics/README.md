@@ -226,3 +226,5 @@ app.get("/demouser", async (req, res) => {
 # Point to Remember
 
 `hash` is the `password` after applying hashing function in Database.
+
+Further is here [Part E](../../../Projects/AirBnb/README.md#part-e).
