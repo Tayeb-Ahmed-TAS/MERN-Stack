@@ -367,3 +367,164 @@ router.delete(
 ```
 
 ## Setting Authorization for Reviews
+
+# Phase 3
+
+## Part A (Controllers Structure and Upload Image / File to Cloud)
+
+### MVC : Model View Controller
+
+- **Model:** Stores database related logic and models.
+
+- **View:** Stores the presentation layer, rendering templates and displaying data to users.
+
+- **Controller:** Stores the backend logic, handling requests, processing data, and interacting with models and views.
+
+### Controllers Structure
+
+We'll transfer all the `callbacks` from the route files to `controllers` files.
+
+- `controllers/listings.js` for listing related controllers.
+
+- `controllers/reviews.js` for review related controllers.
+
+- `controllers/users.js` for user related controllers.
+
+---
+
+### `router.route()` to group routes with same path
+
+[Express Router.route()](https://expressjs.com/en/4x/api.html#router.route)
+
+---
+
+### Rating styling with stars
+
+We'll use a library called `starability` to display star ratings in our application.
+
+[Starability - Accessible star rating](https://github.com/LunarLogic/starability) | [Starability Demo](https://lunarlogic.github.io/starability/)
+
+---
+
+## Upload Image
+
+### We need to set the `enctype` attribute of the form to `multipart/form-data` to enable file uploads
+
+```html
+<!-- views/listings/new.ejs -->
+
+<form
+  method="POST"
+  action="/listings"
+  novalidate
+  class="needs-validation"
+  enctype="multipart/form-data"
+>
+  <!-- Further Code -->
+</form>
+```
+
+### Then we need a package called `Multer` to handle file uploads in our Express application
+
+Multer is a node.js middleware for handling **`multipart/form-data`**, which is primarily used for uploading files.
+
+[Multer Documentation](https://www.npmjs.com/package/multer)
+
+### Installation
+
+```bash
+npm i multer
+```
+
+### Usage
+
+**Require** and **configure** multer in `app.js`
+
+```javascript
+// routes/listing.js
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" }); // Specify the destination folder for uploaded files
+```
+
+Use `upload.single('fieldname')` as middleware in the route where you want to handle file uploads. Here, `fieldname` is the name attribute of the file input field in your form.
+
+```javascript
+// routes/listing.js
+
+// Create Route - Create a new listing
+router.post(
+  "/",
+  upload.single("listing[image]") // Middleware to handle single file upload from the 'image' field
+  // Further code
+);
+```
+
+After using multer, the uploaded file's information will be available in `req.file`.
+
+The informations are as follows:
+
+| **Property**     | **Description**                                      |
+| ---------------- | ---------------------------------------------------- |
+| **fieldname**    | The name of the form field associated with the file. |
+| **originalname** | The name of the file on the user's computer.         |
+| **encoding**     | The encoding type of the file.                       |
+| **mimetype**     | The MIME type of the file.                           |
+| **destination**  | The folder where the file is stored.                 |
+| **filename**     | The name of the file within the destination folder.  |
+| **path**         | The full path to the uploaded file.                  |
+| **size**         | The size of the file in bytes.                       |
+
+### Cloud Setup
+
+[Cloudinary](https://cloudinary.com/) is a cloud-based service that provides an end-to-end image and video management solution, including uploads, storage, manipulations, optimizations, and delivery.
+
+#### .env file
+
+`.env` file is used to store environment variables or credentials securely.
+
+Data in `.env` file is stored in key-value pairs. It does not support any **quotes** **`" "`** or **`' '`** around values.
+
+Our `.js` files can access these variables directly. We need a package called `dotenv` to load environment variables from a `.env` file into `process.env`.
+
+[Dotenv Documentation](https://www.npmjs.com/package/dotenv)
+
+### Installation
+
+```bash
+npm i dotenv
+```
+
+### Usage
+
+```javascript
+// app.js
+
+if (process.env.NODE_ENV != "production") {
+  require("dotenv").config(); // Load environment variables from .env file
+}
+console.log(process.env.Variable_name); // Access the variable
+```
+
+---
+
+### Store Files on Cloudinary
+
+We need 2 packages for that:
+
+1. `cloudinary` - Official Cloudinary SDK for Node.js [Cloudinary Node.js SDK](https://www.npmjs.com/package/cloudinary)
+
+```bash
+npm i cloudinary
+```
+
+2. `multer-storage-cloudinary` - Cloudinary storage engine for Multer [Multer Storage Cloudinary](https://www.npclmjs.com/package/multer-storage-cloudinary)
+
+```bash
+npm i multer-storage-cloudinary
+```
+
+---
+
+## Part B
+
+### Edit Listing Image
