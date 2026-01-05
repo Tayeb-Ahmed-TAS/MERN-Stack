@@ -110,9 +110,13 @@ if (listing.reviews.length > 0) {
                     <div class="starability-result card-text mt-3 mb-3" data-rating="<%= review.rating %>">
                     </div>
                     <p class="card-text"><%= review.comment %></p>
+
+                    <% if(currUser && currUser._id.equals(review.author._id)) { %>
+                    <!-- Delete buttons only if the current user is available and is the owner of the listing -->
                     <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
                         <button class="btn btn-dark">Delete</button>
                     </form>
+                    <% } %>
                 </div>
             </div>
             <% } %>

@@ -528,3 +528,20 @@ npm i multer-storage-cloudinary
 ## Part B
 
 ### Edit Listing Image
+
+### Preview Imaage to the edit page
+
+[Cloudinary Image Transformations](https://cloudinary.com/documentation/image_transformations#transformation_url_syntax)
+
+| **Transformation** | **Description**                                        |
+| ------------------ | ------------------------------------------------------ |
+| **c_fill**         | Crop the image to fill the specified dimensions.       |
+| **ar_1.0**         | Set the aspect ratio to 1:1 (square).                  |
+| **h_250**          | Set the height of the image to 250 pixels.             |
+| **w_250**          | Set the width of the image to 250 pixels.              |
+| **g_auto**         | Automatically determine the best gravity for cropping. |
+| **e_blur:300**     | Apply a blur effect with a strength of 300.            |
+
+> We've to use this in `url` and in `url` after `upload/` insert these transformations separated by `/`. To use multiple transformations, separate them with a comma `,`.
+>
+> Like, `https://res.cloudinary.com/dprtqxkq0/image/upload/ar_1.0,c_fill,h_250,e_blur:300/v1767613354/wanderlust_DEV/p8oxxug5rvally31z9g4.jpg`

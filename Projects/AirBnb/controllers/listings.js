@@ -47,14 +47,26 @@ module.exports.renderEditForm = async (req, res) => {
     req.flash("error", "Listing you requested for does not exist!");
     res.redirect("/listings");
   } else {
-    res.render("listings/edit.ejs", { listing });
+    // Transform image before sending to edit form
+    let originalImageUrl = listing.image.url; // Store original image URL
+    originalImageUrl = originalImageUrl.replace("/upload", "/upload/w_250"); // Modify URL for resized image to transform image dimensions
+    res.render("listings/edit.ejs", { listing, originalImageUrl });
   }
 };
 
 // Update Route - Update an existing listing
 module.exports.updateListing = async (req, res) => {
   let { id } = req.params;
-  await Listing.findByIdAndUpdate(id, { ...req.body.listing }); // Destructuring to get all fields from req.body.listing
+  let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing }); // Destructuring to get all fields from req.body.listing
+
+  if (typeof req.file !== "undefined") {
+    // If a new image is uploaded only then update the image field
+    let url = req.file.path; // Get the uploaded image URL from Cloudinary
+    let filename = req.file.filename; // Get the uploaded image filename from Cloudinary
+    listing.image = { url, filename }; // Update image url and filename
+    await listing.save();
+  }
+
   req.flash("success", "Listing Updated!");
   res.redirect(`/listings/${id}`); // Redirect to show page
 };
