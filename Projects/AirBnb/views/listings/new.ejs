@@ -20,6 +20,17 @@
                     <div class="invalid-feedback">Please enter a short description</div>
                 </div>
                 <div class="mb-3">
+                    <label for="category" class="form-label">Category</label>
+                    <!-- Drop down menu -->
+                    <select name="listing[category]" id="category" class="form-select" required>
+                        <option value="" disabled selected>Select a category</option>
+                        <% for(let category of categories) { %>
+                        <option value="<%= category %>"><%= category %></option>
+                        <% } %>
+                    </select>
+                    <div class="invalid-feedback">Please select a category</div>
+                </div>
+                <div class="mb-3">
                     <label for="image" class="form-label">Upload Listing Image</label>
                     <input type="file" name="listing[image]" id="image" class="form-control" />
                 </div>

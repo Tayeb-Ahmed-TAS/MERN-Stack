@@ -2,13 +2,43 @@ const Listing = require("../models/listing");
 
 // Index Route - Show all listings
 module.exports.index = async (req, res) => {
-  const allListings = await Listing.find({});
+  const { category, search } = req.query; // Get category and search from query parameters
+
+  // Build query object based on filters
+  let query = {};
+
+  // Apply category filter if provided
+  if (category) {
+    query.category = category; // Filter by category if specified and not "All"
+  }
+
+  // Apply search filter if provided. Search for title, description, location, country, or category
+  if (search) {
+    query.$or = [
+      { title: { $regex: search, $options: "i" } },
+      { description: { $regex: search, $options: "i" } },
+      { location: { $regex: search, $options: "i" } },
+      { country: { $regex: search, $options: "i" } },
+      { category: { $regex: search, $options: "i" } },
+
+      // $regex for case-insensitive partial matching
+      // $options: "i" makes the search case-insensitive
+    ];
+  }
+
+  // MAKE SEARCH AVAILABLE TO NAVBAR
+
+  res.locals.search = search;
+
+  const allListings = await Listing.find(query);
+
   res.render("listings/index.ejs", { allListings });
 };
 
 // New Route - Form to create a new listing
 module.exports.renderNewForm = (req, res) => {
-  res.render("listings/new.ejs");
+  const categories = Listing.schema.path("category").enumValues; // Get enum values for category from schema
+  res.render("listings/new.ejs", { categories });
 };
 
 // Show Route - Show details of a specific listing
@@ -41,6 +71,7 @@ module.exports.createListing = async (req, res) => {
 // Edit Route - Form to edit an existing listing
 module.exports.renderEditForm = async (req, res) => {
   let { id } = req.params;
+  let categories = Listing.schema.path("category").enumValues; // Get enum values for category from schema
   let listing = await Listing.findById(id);
 
   if (!listing) {
@@ -50,7 +81,7 @@ module.exports.renderEditForm = async (req, res) => {
     // Transform image before sending to edit form
     let originalImageUrl = listing.image.url; // Store original image URL
     originalImageUrl = originalImageUrl.replace("/upload", "/upload/w_250"); // Modify URL for resized image to transform image dimensions
-    res.render("listings/edit.ejs", { listing, originalImageUrl });
+    res.render("listings/edit.ejs", { listing, originalImageUrl, categories });
   }
 };
 

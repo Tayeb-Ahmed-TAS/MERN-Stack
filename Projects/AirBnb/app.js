@@ -10,6 +10,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
+const MongoStore = require("connect-mongo").default;
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -18,8 +19,11 @@ const User = require("./models/user.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const { error } = require("console");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+
+const dbURL = process.env.ATLASDB_URL;
 
 main()
   .then(() => {
@@ -28,7 +32,7 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(dbURL);
 }
 
 app.set("view engine", "ejs");
@@ -38,8 +42,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 
+// Configure MongoDB session store
+const store = MongoStore.create({
+  mongoUrl: dbURL,
+  crypto: {
+    secret: process.env.SECRET, // secret used to encrypt session data
+  },
+  touchAfter: 24 * 60 * 60, // time period in seconds (24 hours)
+});
+
+// Handle errors in session store
+store.on("error", () => {
+  console.log("ERROR IN MONGO SESSION STORE", error);
+});
+
 const sessionOptions = {
-  secret: "mysupersecretcode",
+  store, // Use MongoDB session store
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -49,9 +68,9 @@ const sessionOptions = {
   },
 };
 
-app.get("/", (req, res) => {
-  res.send("Welcome to the AirBnb clone!");
-});
+// app.get("/", (req, res) => {
+//   res.send("Welcome to the AirBnb clone!");
+// });
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -67,6 +86,7 @@ app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.currUser = req.user;
+  res.locals.search = req.query.search || ""; // Make search query available in all templates
 
   next();
 });

@@ -545,3 +545,41 @@ npm i multer-storage-cloudinary
 > We've to use this in `url` and in `url` after `upload/` insert these transformations separated by `/`. To use multiple transformations, separate them with a comma `,`.
 >
 > Like, `https://res.cloudinary.com/dprtqxkq0/image/upload/ar_1.0,c_fill,h_250,e_blur:300/v1767613354/wanderlust_DEV/p8oxxug5rvally31z9g4.jpg`
+
+---
+
+## Part C
+
+### Search Functionality
+
+### Filter Listings by Category
+
+### Tax Toggle
+
+---
+
+## Part D (Deployment)
+
+### Mongo Atlas
+
+Cloud Database Service: [Mongo Atlas](https://www.mongodb.com/atlas/database)
+
+It is a database where we can deploy a multi-cloud database.
+
+### Mongo Session Store
+
+To store session data in MongoDB, we can use the `connect-mongo` package, which is a MongoDB session store for Express and Connect.
+
+[Connect-Mongo Documentation](https://www.npmjs.com/package/connect-mongo)
+
+#### Installation
+
+```bash
+npm i connect-mongo
+```
+
+#### Require
+
+```javascript
+const MongoStore = require("connect-mongo").default;
+```

@@ -24,6 +24,18 @@
                 <img src="<%= originalImageUrl %>" />
             </div>
             <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <!-- Select the original category -->
+                <select name="listing[category]" id="category" class="form-select" required>
+                    <option value="" disabled>Select a category</option>
+                    <% for(let category of categories) { %>
+                    <option value="<%= category %>" <%= category === listing.category ? "selected" : "" %>>
+                        <%= category %></option>
+                    <% } %>
+                </select>
+                <div class="invalid-feedback">Please select a category</div>
+            </div>
+            <div class="mb-3">
                 <label for="image" class="form-label">Upload New Image</label>
                 <input type="file" name="listing[image]" id="image" class="form-control" />
             </div>
